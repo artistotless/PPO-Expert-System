@@ -1,0 +1,69 @@
+﻿<Window x:Class="PPO.SmartphonesWindow"
+        UseLayoutRounding="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPO"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     FontFamily="{DynamicResource MaterialDesignFont}" Background="White" ResizeMode="CanMinimize" WindowStyle="None"
+        >
+    <Window.Resources>
+        <Color x:Key="Color1">#FF798081</Color>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="-1,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF84A3F5" Offset="0"/>
+                <GradientStop Color="#FFB4C8FF" Offset="1"/>
+                <GradientStop Color="#CCED8848" Offset="0.422"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid  Margin="0 0 0 0">
+            <Border   Height="35" VerticalAlignment="Top"  Background="#FF1D1D1D">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="11" ShadowDepth="2" Color="#33DADADA" Direction="327"></DropShadowEffect>
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Click="showEditSmartphonesWindow"  FontWeight="Regular" Grid.Column="0" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}" Margin="15 0 0 0" Background="#FFFF7800" BorderBrush="#FFDC700F" FontFamily="Rockwell" >
+                            <Button.Foreground>
+                                <SolidColorBrush Color="White"/>
+                            </Button.Foreground> Редактировать
+                        </Button>
+
+                    </StackPanel>
+                    <Button Click="closeWindow" FontWeight="Regular" Grid.Column="1" Margin="0 0 15 0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}"  Background="#FF3E3E3E" BorderBrush="#FF535353" FontFamily="Rockwell" >
+                        <Button.Foreground>
+                            <SolidColorBrush Color="#FFB6B6B6"/>
+                        </Button.Foreground> Закрыть
+                    </Button>
+                </Grid>
+
+
+            </Border>
+
+            <ScrollViewer Margin="0 40 0 0 "  HorizontalScrollBarVisibility="Visible">
+            <StackPanel x:Name="panel" Orientation="Horizontal">
+              </StackPanel>
+            </ScrollViewer>
+
+
+
+        </Grid>
+    </Grid>
+</Window>

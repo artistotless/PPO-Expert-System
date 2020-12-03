@@ -1,0 +1,244 @@
+﻿<Window x:Class="PPO.MainWindow"
+        UseLayoutRounding="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPO"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     FontFamily="{DynamicResource MaterialDesignFont}" Background="White" ResizeMode="CanMinimize" WindowStyle="None"
+        >
+    <Window.Resources>
+        <Color x:Key="Color1">#FF798081</Color>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="-1,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF84A3F5" Offset="0"/>
+                <GradientStop Color="#FFB4C8FF" Offset="1"/>
+                <GradientStop Color="#CCED8848" Offset="0.422"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+        <Border   Height="35" VerticalAlignment="Top"  Background="#FF1D1D1D">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="11" ShadowDepth="2" Color="#33DADADA" Direction="327"></DropShadowEffect>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="restartBtn_Click"  FontWeight="Regular" Grid.Column="0" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}" Margin="15 0 0 0" Background="#FF3E3E3E" BorderBrush="#FF535353" FontFamily="Rockwell" >
+                        <Button.Foreground>
+                            <SolidColorBrush Color="#FFB6B6B6"/>
+                        </Button.Foreground> Начать заново
+                    </Button>
+                    <Button Click="helpBtn_Click"  Grid.Column="0" Margin="15 0 0 0"
+                     
+                        materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                        Width="20"
+                        Height="20"
+                        Background="Transparent"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="Помощь">
+                        <Button.BorderBrush>
+                            <SolidColorBrush Color="{DynamicResource Color1}"/>
+                        </Button.BorderBrush>
+                        <materialDesign:PackIcon
+                            Kind="Help"
+                            Foreground="#FF798081"
+                            Height="16"
+                            Width="16" />
+                    </Button>
+                </StackPanel>
+                <Button Click="exitProgram" FontWeight="Regular" Grid.Column="1" Margin="0 0 15 0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}"  Background="#FF3E3E3E" BorderBrush="#FF535353" FontFamily="Rockwell" >
+                    <Button.Foreground>
+                        <SolidColorBrush Color="#FFB6B6B6"/>
+                    </Button.Foreground> Завершить сеанс
+                </Button>
+            </Grid>
+
+
+        </Border>
+
+        <Grid  Margin="0 45 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <Border VerticalAlignment="Stretch" Grid.Row="0" HorizontalAlignment="Left" MinWidth="400" MaxWidth="500" CornerRadius="5" Margin="15" Padding="15 6 15 0"  Background="White">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="29" ShadowDepth="0" Color="#FF0F0F0F" Opacity="0.3" Direction="314"></DropShadowEffect>
+                </Border.Effect>
+
+                <StackPanel x:Name="solutionStackPanel" Height="auto">
+
+                    <TextBlock FontFamily="Segoe UI" FontStretch="UltraExpanded" x:Name="questionText" Margin="0 15 0 15" FontSize="16" TextAlignment="Center">
+                    Для каких целей смартфон?
+                    </TextBlock>
+
+                    <Border x:Name="containerAnswerList" VerticalAlignment="Top"  HorizontalAlignment="Left" MinWidth="400" MaxWidth="400" CornerRadius="5" Margin="15" Padding="15"  Height="150"  Background="#FFFFEAD8">
+
+                        <ScrollViewer CanContentScroll="True"  VerticalScrollBarVisibility="Visible">
+
+                            <StackPanel x:Name="answerList" MaxHeight="90">
+
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <Button Click="MainBtn_Click" materialDesign:ButtonAssist.CornerRadius="5" x:Name="mainBtn" Height="40" Margin="15 0 15 0"
+                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                         Foreground="White"
+                       
+                        ToolTip="Далее"
+                        Content="Далее" BorderBrush="White" FontFamily="Segoe UI" FontWeight="Bold">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform Angle="-262.405" CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FFEA8B55"/>
+                                <GradientStop Color="#FFFF7800" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+
+            </Border>
+
+
+
+
+            <Border  Height="auto" VerticalAlignment="Stretch" Margin="15" Grid.Row="0" CornerRadius="5" Padding="15" Grid.Column="1"    Background="White" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="29" ShadowDepth="0" Color="#FF0F0F0F" Opacity="0.3" Direction="314"></DropShadowEffect>
+                </Border.Effect>
+                <StackPanel>
+                    <DockPanel >
+                        <TextBlock VerticalAlignment="Center" FontSize="15"  DockPanel.Dock="Left" FontFamily="Segoe UI">
+                            <TextBlock.Foreground>
+
+                                <SolidColorBrush Color="#FF4B619B"/>
+                            </TextBlock.Foreground>История</TextBlock>
+                        <Button Click="clearHistoryBtn_Click"
+                            materialDesign:RippleAssist.Feedback="Black"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Width="24"
+                        Height="24"
+                        Background="#FF819FEF"
+                        BorderBrush="White"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="Очистить историю." Foreground="White">
+                            <materialDesign:PackIcon
+                            Kind="Delete"
+                            Foreground="#FF4B62A2"
+                            Height="16"
+                            Width="16" />
+                        </Button>
+                    </DockPanel>
+
+                    <Border Margin="0 15 0 15" Height="1.5" Background="#FFDCE6FF"/>
+                    <ScrollViewer CanContentScroll="true" materialDesign:ScrollBarAssist.ThumbHeight="2" VerticalScrollBarVisibility="Hidden">
+                        
+                        <StackPanel CanVerticallyScroll="True" x:Name="historyList" Orientation="Vertical" MaxHeight="200">
+
+
+                        </StackPanel>
+                    </ScrollViewer>
+
+                </StackPanel>
+
+            </Border>
+            <Border  Grid.Row="1" Grid.ColumnSpan="2">
+
+                <ScrollViewer HorizontalAlignment="Right" Margin="0 0 15 0" CanContentScroll="true" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <StackPanel  Orientation="Horizontal">
+                            <Button Click="showDiagramWindow" FontSize="12" FontWeight="Regular" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Width="auto" Content="Показать граф" VerticalAlignment="Center"  Margin="15 0 0 0" Height="40" Background="#00000000" BorderBrush="White" Foreground="White" FontFamily="Segoe UI" />
+                            <Border CornerRadius="0 5 5 0" Width="30" Height="40" Background="White">
+                                <materialDesign:PackIcon Kind="Graph"
+                                                     
+                                                     VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"                  
+                            Foreground="#FFFF7800"
+                            Height="auto"
+                                                    
+                            Width="18" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel   Orientation="Horizontal">
+                            <Button Click="showGraphsWindow" FontSize="12" FontWeight="Regular" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Width="auto" Content="Редактор вопросов" VerticalAlignment="Center"  Margin="15 0 0 0" Height="40" Background="#002D364C" BorderBrush="White" Foreground="White" FontFamily="Segoe UI" />
+                            <Border CornerRadius="0 5 5 0" Width="30" Height="40" Background="White">
+                                <materialDesign:PackIcon Kind="QuestionMarkBox"
+                                                     
+                                                     VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"                  
+                            Foreground="#FF4EDC0B"
+                            Height="auto"
+                                                    
+                            Width="18" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel   Orientation="Horizontal">
+                            <Button Click="showTransitionsWindow" FontSize="12" FontWeight="Regular" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Width="auto" Content="Редактор переходов" VerticalAlignment="Center"  Margin="15 0 0 0" Height="40" Background="#002D364C" BorderBrush="White" Foreground="White" FontFamily="Segoe UI" />
+                            <Border CornerRadius="0 5 5 0" Width="30" Height="40" Background="White">
+                                <materialDesign:PackIcon Kind="Transition"
+                                                     
+                                                     VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"                  
+                            Foreground="#FF4EDC0B"
+                            Height="auto"
+                                                    
+                            Width="18" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal">
+                            <Button Click="showSmartphonesWindow" FontSize="12" FontWeight="Regular" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Width="auto" Content="Список смартфонов" VerticalAlignment="Center"  Margin="15 0 0 0" Height="40" BorderBrush="White" Foreground="White" FontFamily="Segoe UI" Background="#00000000" />
+                            <Border CornerRadius="0 5 5 0" Width="30" Height="40" Background="#EAFFF9F9">
+                                <materialDesign:PackIcon Kind="SmartphoneAndroid"
+                                                     
+                                                     VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"                  
+                            Foreground="#FF00C5FF"
+                            Height="auto"
+                                                    
+                            Width="18" />
+                            </Border>
+                        </StackPanel>
+                        
+
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

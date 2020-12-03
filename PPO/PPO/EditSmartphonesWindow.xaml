@@ -1,0 +1,61 @@
+﻿<Window x:Class="PPO.EditSmartphonesWindow"
+         UseLayoutRounding="True"
+         MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPO"
+        mc:Ignorable="d"
+        Title="TransitionsWindow" Height="450" Width="800"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     FontFamily="{DynamicResource MaterialDesignFont}" Background="White" ResizeMode="CanMinimize" WindowStyle="None"
+        >
+    <Grid>
+        <Border   Height="35" VerticalAlignment="Top"  Background="#FF1D1D1D">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="11" ShadowDepth="2" Color="#33DADADA" Direction="327"></DropShadowEffect>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="saveChanges"  FontWeight="Regular" Grid.Column="0" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}" Margin="15 0 0 0" Background="#FFFF7800" BorderBrush="#FFDC700F" FontFamily="Rockwell" >
+                        <Button.Foreground>
+                            <SolidColorBrush Color="White"/>
+                        </Button.Foreground> Сохранить
+                    </Button>
+
+                </StackPanel>
+                <Button Click="closeWindow" FontWeight="Regular" Grid.Column="1" Margin="0 0 15 0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Center"   Height="20" FontSize="11" materialDesign:RippleAssist.Feedback="Snow" Style="{StaticResource MaterialDesignFlatButton}"  Background="#FF3E3E3E" BorderBrush="#FF535353" FontFamily="Rockwell" >
+                    <Button.Foreground>
+                        <SolidColorBrush Color="#FFB6B6B6"/>
+                    </Button.Foreground> Закрыть
+                </Button>
+            </Grid>
+
+
+        </Border>
+
+        <Border Margin="0 40 0 0">
+            <DataGrid AutoGenerateColumns="False" x:Name="table">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="id" Binding="{Binding Path=id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=cost}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Описание" Binding="{Binding Path=descr}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Изображение" Binding="{Binding Path=image}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ссылка" Binding="{Binding Path=link}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Window>
